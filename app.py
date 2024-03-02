@@ -7,8 +7,8 @@ def main():
         # Form fields
         age = st.number_input("Age", min_value=0, max_value=150, step=1, value=25)
         gender = st.selectbox("Gender", ["Male", "Female", "Other"])
-        lifestyle = st.input("Lifestyle")
-        conditions = st.input("Conditions")
+        lifestyle = st.text_input("Lifestyle")
+        conditions = st.text_input("Conditions")
 
         # Translation option
         translation = st.radio("Translate to", ["Arabic", "Urdu"])
