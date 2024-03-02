@@ -6,7 +6,7 @@ def main():
     
     with st.form("user_input_form"):
         # Form fields
-        age = st.number_input("Age", min_value=0, max_value=150, step=1)
+        age = st.number_input("Age", min_value=1, max_value=150, step=1)
         gender = st.selectbox("Gender", ["Male", "Female"])
         lifestyle = st.text_input("Lifestyle")
         conditions = st.text_input("Conditions")
