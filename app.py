@@ -11,7 +11,8 @@ def main():
         conditions = st.text_input("Conditions")
 
         # Translation option
-        translation = st.radio("Translate to", ["Arabic", "Urdu"])
+        languages = [None, "ar", "ur"]
+        translation = st.radio("Translate to language:", languages, index=0)
 
         submit_button = st.form_submit_button(label='Submit')
 
