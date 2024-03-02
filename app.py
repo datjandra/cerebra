@@ -1,8 +1,9 @@
 import streamlit as st
 
 def main():
-    st.title("Form with Streamlit")
-
+    st.title("Cerebra")
+    st.image("https://raw.githubusercontent.com/datjandra/cerebra/main/cerebra.png", use_column_width=True)
+    
     with st.form("user_input_form"):
         # Form fields
         age = st.number_input("Age", min_value=0, max_value=150, step=1, value=25)
