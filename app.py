@@ -2,7 +2,7 @@ import streamlit as st
 
 def main():
     st.title("Cerebra")
-    st.image("https://raw.githubusercontent.com/datjandra/cerebra/main/cerebra.png", width=200, use_column_width="auto")
+    st.image("https://raw.githubusercontent.com/datjandra/cerebra/main/cerebra.png", width=200)
     
     with st.form("user_input_form"):
         # Form fields
