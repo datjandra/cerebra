@@ -25,8 +25,11 @@ def assess_risk(age, gender, lifestyle, conditions, translation):
     if conditions is not None and conditions != "":
         user_input += f"Conditions: {conditions}\n"
 
-    response = model.generate_content(user_input)
-    return response.text
+    try:
+        response = model.generate_content(user_input)
+        return response.text
+    except:
+        return "An error occurred while generating content. Please try again later."
     
 def main():
     st.title("Cerebra")
