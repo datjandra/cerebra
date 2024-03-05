@@ -6,7 +6,7 @@ GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 genai.configure(api_key=GOOGLE_API_KEY)
 model = genai.GenerativeModel('gemini-pro')
 
-def assess_risk(age, gender, lifestyle, conditions, translation):
+def assess_risk(age, gender, lifestyle, conditions, family_history, translation):
     translations = {
         'Arabic': "Analyze the potential risk factors for developing Alzheimer's disease based on these factors in Arabic:\n"
         # Add more translations as needed
@@ -19,6 +19,8 @@ def assess_risk(age, gender, lifestyle, conditions, translation):
     if gender is not None and gender != "":
         user_input += f"Gender: {gender}\n"
 
+    user_input += f"Family history: {family_history}\n"
+    
     if lifestyle is not None and lifestyle != "":
         user_input += f"Lifestyle factors: {lifestyle}\n"
     
@@ -39,6 +41,10 @@ def main():
         # Form fields
         age = st.number_input("Age", min_value=1, max_value=150, step=1)
         gender = st.selectbox("Gender", ["Male", "Female"])
+
+        family_history_options = ["Unknown", "Positive", "Negative"]
+        family_history = st.selectbox("Select family history:", family_history_options, index=family_history_options.index("Negative"))
+        
         lifestyle = st.text_input("Lifestyle")
         conditions = st.text_input("Conditions")
 
@@ -50,7 +56,7 @@ def main():
 
     if submit_button:
         # Displaying entered information
-        assessment = assess_risk(age, gender, lifestyle, conditions, translation)
+        assessment = assess_risk(age, gender, lifestyle, conditions, family_history, translation)
         st.markdown(assessment)
 
 if __name__ == "__main__":
