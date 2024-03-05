@@ -1,5 +1,28 @@
 import streamlit as st
+import google.generativeai as genai
 
+GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
+genai.configure(api_key=GOOGLE_API_KEY)
+model = genai.GenerativeModel('gemini-pro')
+
+def assess_risk(age, gender, lifestyle, conditions):
+    user_input = "Analyze the potential risk factors for developing Alzheimer's disease based on these factors:\n"
+
+    if age is not None and age != "":
+        user_input += f"Age: {age}\n"
+
+    if gender is not None and gender != "":
+        user_input += f"Gender: {gender}\n"
+
+    if lifestyle is not None and lifestyle != "":
+        user_input += f"Lifestyle factors: {lifestyle}\n"
+    
+    if conditions is not None and conditions != "":
+        user_input += f"Conditions: {conditions}\n"
+
+    response = model.generate_content(user_input)
+    return response.text
+    
 def main():
     st.title("Cerebra")
     st.image("https://raw.githubusercontent.com/datjandra/cerebra/main/cerebra.png", width=200)
@@ -19,11 +42,8 @@ def main():
 
     if submit_button:
         # Displaying entered information
-        st.write("Entered Information:")
-        st.write("Age:", age)
-        st.write("Gender:", gender)
-        st.write("Lifestyle:", lifestyle)
-        st.write("Conditions:", conditions)
+        assessment = assess_risk(age, gender, lifestyle, conditions)
+        st.markdown(assessment)
 
 if __name__ == "__main__":
     main()
