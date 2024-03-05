@@ -43,7 +43,7 @@ def main():
         gender = st.selectbox("Gender", ["Male", "Female"])
 
         family_history_options = ["Unknown", "Positive", "Negative"]
-        family_history = st.selectbox("Select family history:", family_history_options, index=family_history_options.index("Negative"))
+        family_history = st.selectbox("Family history:", family_history_options, index=family_history_options.index("Negative"))
         
         lifestyle = st.text_input("Lifestyle")
         conditions = st.text_input("Conditions")
