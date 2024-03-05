@@ -40,8 +40,8 @@ def main():
         conditions = st.text_input("Conditions")
 
         # Translation option
-        languages = [None, "ar"]
-        translation = st.radio("Translate to language:", languages, index=0)
+        languages = {"None": None, "Arabic": "ar"}
+        translation = st.selectbox("Translate to language:", list(languages.keys()), index=0)
 
         submit_button = st.form_submit_button(label='Submit')
 
