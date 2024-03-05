@@ -42,7 +42,7 @@ def main():
         # Translation option
         languages = [("None", None), ("Arabic", "ar")]
         translation_index = st.radio("Translate to language:", [lang[0] for lang in languages], index=0)
-        translation_value = languages[translation_index][1]
+        translation_value = languages[translation_index][1] if translation_index is not None else None
 
         submit_button = st.form_submit_button(label='Submit')
 
