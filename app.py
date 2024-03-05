@@ -7,8 +7,13 @@ genai.configure(api_key=GOOGLE_API_KEY)
 model = genai.GenerativeModel('gemini-pro')
 
 def assess_risk(age, gender, lifestyle, conditions):
-    user_input = "Analyze the potential risk factors for developing Alzheimer's disease based on these factors:\n"
-
+    translations = {
+        'ar': "Analyze the potential risk factors for developing Alzheimer's disease based on these factors in Arabic and English:\n",
+        'ur': "Analyze the potential risk factors for developing Alzheimer's disease based on these factors in Urdu and English:\n",
+        # Add more translations as needed
+    }
+    user_input = translations.get(translation, "Analyze the potential risk factors for developing Alzheimer's disease based on these factors:\n")
+    
     if age is not None and age != "":
         user_input += f"Age: {age}\n"
 
