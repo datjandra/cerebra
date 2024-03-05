@@ -8,8 +8,8 @@ model = genai.GenerativeModel('gemini-pro')
 
 def assess_risk(age, gender, lifestyle, conditions, translation):
     translations = {
-        'ar': "Analyze the potential risk factors for developing Alzheimer's disease based on these factors in Arabic and English:\n",
-        'ur': "Analyze the potential risk factors for developing Alzheimer's disease based on these factors in Urdu and English:\n",
+        'ar': "Analyze the potential risk factors for developing Alzheimer's disease based on these factors in Arabic:\n",
+        'ur': "Analyze the potential risk factors for developing Alzheimer's disease based on these factors in Urdu:\n",
         # Add more translations as needed
     }
     user_input = translations.get(translation, "Analyze the potential risk factors for developing Alzheimer's disease based on these factors:\n")
