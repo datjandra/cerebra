@@ -8,7 +8,7 @@ model = genai.GenerativeModel('gemini-pro')
 
 def assess_risk(age, gender, lifestyle, conditions, translation):
     translations = {
-        'ar': "Analyze the potential risk factors for developing Alzheimer's disease based on these factors in Arabic:\n"
+        'Arabic': "Analyze the potential risk factors for developing Alzheimer's disease based on these factors in Arabic:\n"
         # Add more translations as needed
     }
     user_input = translations.get(translation, "Analyze the potential risk factors for developing Alzheimer's disease based on these factors:\n")
@@ -40,10 +40,9 @@ def main():
         conditions = st.text_input("Conditions")
 
         # Translation option
-        languages = [("None", None), ("Arabic", "ar")]
-        translation_index = st.radio("Translate to language:", [lang[0] for lang in languages], index=0)
-        translation_value = languages[translation_index][1] if translation_index is not None else None
-
+        languages = ["Arabic"]
+        translation = st.radio("Translate to language:", languages, index=None)
+        
         submit_button = st.form_submit_button(label='Submit')
 
     if submit_button:
